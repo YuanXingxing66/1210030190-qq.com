@@ -1,0 +1,25 @@
+<!--查询-->
+<view class="querySection">
+  <text class="help-text">请输入查询内容</text>
+  <input class="queryInput" type="number" value="{{phoneNumber}}" />
+  <button class="queryBtn" type="primary" bindtap="queryPhoneInfo" disabled="{{disabled}}">查询</button>
+</view>
+<!--查询结果-->
+<view class="items">
+  <view class="classname">
+    <text class="help-text">查询结果为：</text>
+    <text wx:if="{{phoneInfo.ret === 0}}">
+      {{phoneInfo.operator}}{{phoneInfo.province}}{{phoneInfo.city}}
+    </text>
+    <text wx:else>{{phoneInfo.msg}}</text>
+  </view>
+</view>
+<!--最近搜索记录-->
+<view class="help-text">
+  <text>最近搜索记录为：</text>
+  <view class="items">
+    <view class="item" wx:for="{{historyList}}" bindtap="selectHistory" data-number="{{item}}">
+      {{item}}
+    </view>
+  </view>
+</view>
